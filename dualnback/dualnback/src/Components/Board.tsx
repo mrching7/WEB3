@@ -32,8 +32,7 @@ class Board {
     public samePosition() {
         if (this.history.length > 1 && _.isEqual(this.history[this.history.length - 1].position, this.history[this.history.length - 2].position)) {
             this.updateScore(100);
-        }
-        else{
+        } else {
             this.updateScore(-50);
         }
     }
@@ -41,8 +40,7 @@ class Board {
     public sameSound() {
         if (this.history.length > 1 && _.isEqual(this.history[this.history.length - 1].sound, this.history[this.history.length - 2].sound)) {
             this.updateScore(100);
-        }
-        else{
+        } else {
             this.updateScore(-50);
         }
     }
