@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './grid.css';
+import './Grid.css';
 
 
 export interface Iprops {
