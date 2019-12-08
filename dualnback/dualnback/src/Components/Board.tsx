@@ -1,12 +1,12 @@
 import Flash from "./Flash";
 import * as _ from "lodash";
-//github versionsdfgsd
+//github version
 
 import { tsParenthesizedType } from "@babel/types";
 
 class Board {
 
-    public onScareChange?: (prevScore: number, nextScore: number) => void;
+    public onScoreChange?: (prevScore: number, nextScore: number) => void;
     private timerToken?: number;
     private onFlash?: (flash: Flash) => void;
     private readonly history: Flash[];
@@ -45,12 +45,12 @@ class Board {
         }
     }
 
-    public updateScore(delta: number){
-        const newScore: number=this.score+delta;
-        if(this.onScareChange){
-            this.onScareChange(this.score, newScore);
+    private updateScore(delta: number) {
+        const newScore: number = this.score + delta;
+        if (this.onScoreChange) {
+            this.onScoreChange(this.score, newScore);
         }
-        this.score=newScore;
+        this.score = newScore;
     }
     public randomInRange(min: number, max: number){
         return Math.floor(Math.random()*(max-min+1)+min);
