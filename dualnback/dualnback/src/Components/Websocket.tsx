@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
+import HighS from "./Board"
 
 var client=new W3CWebSocket('ws://localhost:3030');
 
 
 class App extends Component{
-    
+    constructor(props?: any, highscore?: any){
+        super(props);
+    }
+
     ws=new WebSocket('ws://localhost:3030');
 
     componentDidMount(){
@@ -26,9 +30,24 @@ class App extends Component{
         }
     }
     //send data til serveren på en eller anden måde
-    public sendMessage(props){
-        this.ws.send(JSON.stringify(props.HighScore));
+    public send(props: string){
+        this.ws.send(props);
     }
+
+    /*
+    sendMessage=()=>{
+        
+        try{
+            this.ws.send()
+        }
+        catch(error){
+            console.log(error);
+        }
+        //this.ws.send(JSON.stringify(props.highscore));
+    }
+    */
 }
+
+export default App;
 
 

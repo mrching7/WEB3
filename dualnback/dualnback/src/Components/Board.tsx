@@ -1,10 +1,18 @@
 import Flash from "./Flash";
 import * as _ from "lodash";
+import * as React from 'react';
+import Websocket from "./Websocket";
 //github version
 
 import { tsParenthesizedType } from "@babel/types";
+import { any } from "prop-types";
 
-class Board {
+export interface ISocket {
+    websocket: Websocket;
+}
+
+
+class Board extends React.Component<ISocket>{
 
     public onScoreChange?: (prevScore: number, nextScore: number, highScore: number) => void;
     private timerToken?: number;
@@ -12,11 +20,18 @@ class Board {
     private readonly history: Flash[];
     private score: number;
     private highscore: number;
+    private ws!: WebSocket;
 
-    constructor(public readonly rows: number, public readonly columns: number) {
+    constructor(public readonly rows: number, public readonly columns: number, props?:any) {
+        super(props);
         this.history = [];
         this.score = 0;
         this.highscore = 0;
+
+        const state = {
+            websocket: new Websocket(this.rows, this.highscore)
+        }
+
     }
 
     public start(onFlash: (flash: Flash) => void) {
@@ -54,7 +69,8 @@ class Board {
         if(this.onScoreChange){
             if(this.highscore < newScore){
                 this.highscore = newScore;
-                this.onScoreChange(this.score, newScore, this.highscore);                     
+                this.onScoreChange(this.score, newScore, this.highscore);
+                this.state.websocket.send(this.highscore.toString);    
             }
             else{
                 this.onScoreChange(this.score, newScore, this.highscore);
