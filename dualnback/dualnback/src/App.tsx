@@ -33,27 +33,41 @@ class App extends React.Component<{}, IState> {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Dual N-Back</h1>
         </header>
         <Container>
           <Row>
-          <Col xs="3"> 
-          </Col>
-            <Col xs="6">
+            <Col xs="3"></Col>
+
+            <Col xs="6" >
+              <Button className={this.state.gameRunning ? 'hidden' : 'playbtn'} onClick={this.onPlay}>Play</Button>
+              <Button className={!this.state.gameRunning ? 'hidden' : 'playbtn'} onClick={this.onPause}>Pause</Button>
+              
               <Game rows={this.state.gridSize} columns={this.state.gridSize} running={this.state.gameRunning} onScoreChange={this.onScoreChange} />
             </Col>
-            <Col xs="3">
-              <Row>
-                <Col xs="12">
-                  <Button color="primary" className={this.state.gameRunning ? 'hidden' : ''} onClick={this.onPlay}>Play</Button>
-                  <Button color="primary" className={!this.state.gameRunning ? 'hidden' : ''} onClick={this.onPause}>Pause</Button>
-                </Col>
-              </Row>
-              <Row>
-                <p>{this.state.score}</p>
-              </Row>
+
+            <Col xs="3"></Col>
+
+
+          </Row>
+          <Row>
+
+            <Col xs="3"></Col>
+
+            <Col xs="6" >
+            <p className="scoreSpace">
+              <span className="score">Currentscore: </span>
+              {this.state.score}
+
+              <br></br>
+
+              <span className="score">Highscore: </span>
+              0
+            </p>
             </Col>
+
+            <Col xs="3"></Col>
+
           </Row>
         </Container>
       </div>

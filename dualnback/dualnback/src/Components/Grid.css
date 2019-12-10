@@ -2,34 +2,38 @@
     width: 33%;
 }
 .square{
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    background-color: aliceblue;
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	color:	white;
+	background-color:	#222222;
 }
 .square {
 	overflow: hidden;
 	border-radius: 8px;
 	background-size: cover;
-	box-shadow: 0 3px 12px rgba(37, 34, 67, 0.9);
 }
 .square-100 {
 	width: 100%;
-	padding-bottom: 100%;
+	padding-top: 10%;
+	padding-bottom: 80%;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: overline;
 }
 
 
 .grid{
     display: block;
     padding: 0;
-    margin: 0, -6px, 12px;
+    margin: 0px -6px 12px;
     text-align: left;
     font-size: 0;
 }
 
 .grid-cell {
 	display: inline-block;
-	margin: 0;
+	margin-top: 0;
 	padding: 0 6px;
 	text-align: left;
 	vertical-align: top;
@@ -45,3 +49,13 @@
 .one {
 	background-image: url(https://assets.iamsteve.me/placeholder/1.jpg);
 }
+
+.grid-space {
+    margin-top: 15px;
+}
+
+.psbtn {
+	width: 31%;
+	margin: 2px 5px 0px 5px;
+	background-color: darkcyan;
+  }

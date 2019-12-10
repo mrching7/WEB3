@@ -6,15 +6,17 @@ import { tsParenthesizedType } from "@babel/types";
 
 class Board {
 
-    public onScoreChange?: (prevScore: number, nextScore: number) => void;
+    public onScoreChange?: (prevScore: number, nextScore: number, highScore?: number) => void;
     private timerToken?: number;
     private onFlash?: (flash: Flash) => void;
     private readonly history: Flash[];
     private score: number;
+    private highscore: number;
 
     constructor(public readonly rows: number, public readonly columns: number) {
         this.history = [];
         this.score = 0;
+        this.highscore = 0;
     }
 
     public start(onFlash: (flash: Flash) => void) {
@@ -32,7 +34,8 @@ class Board {
     public samePosition() {
         if (this.history.length > 1 && _.isEqual(this.history[this.history.length - 1].position, this.history[this.history.length - 2].position)) {
             this.updateScore(100);
-        } else {
+        }
+        else{
             this.updateScore(-50);
         }
     }
@@ -40,18 +43,28 @@ class Board {
     public sameSound() {
         if (this.history.length > 1 && _.isEqual(this.history[this.history.length - 1].sound, this.history[this.history.length - 2].sound)) {
             this.updateScore(100);
-        } else {
+        }
+        else{
             this.updateScore(-50);
         }
     }
 
-    private updateScore(delta: number) {
-        const newScore: number = this.score + delta;
-        if (this.onScoreChange) {
-            this.onScoreChange(this.score, newScore);
+    public updateScore(delta: number){
+        const newScore: number=this.score+delta;
+        if(this.onScoreChange){
+
+            if(this.highscore < newScore){
+                this.highscore = newScore;
+                this.onScoreChange(this.score, newScore, this.highscore);                     
+            }
+            else{
+                this.highscore = newScore; 
+                this.onScoreChange(this.score, newScore, this.highscore);
+            }
         }
-        this.score = newScore;
+        this.score=newScore;
     }
+
     public randomInRange(min: number, max: number){
         return Math.floor(Math.random()*(max-min+1)+min);
     }

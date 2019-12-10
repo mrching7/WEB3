@@ -74,8 +74,8 @@ class Game extends React.Component<IProps, IState> {
         return (
             <div>
                 <Grid rows={this.state.board.rows} columns={this.state.board.columns} {...props} />
-                <Button color="secondary" disabled={!this.props.running} onClick={this.tryPosition}>Position</Button>
-                <Button color="secondary" disabled={!this.props.running} onClick={this.trySound}>Sound</Button>
+                <Button className="psbtn" color="secondary" disabled={!this.props.running} onClick={this.tryPosition}>Position</Button>
+                <Button className="psbtn" color="secondary" disabled={!this.props.running} onClick={this.trySound}>Sound</Button>
             </div>
         );
     }

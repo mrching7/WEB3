@@ -24,6 +24,7 @@ class Grid extends React.Component<Iprops, object>{
                 </div>
                 );
             }
+
             rows.push(
                 <div className="grid" key={i + 1}>
                     {columns}
@@ -31,7 +32,7 @@ class Grid extends React.Component<Iprops, object>{
             );
         }
         return (
-            <div className="grid-container">
+            <div className="grid-container grid-space">
                 {rows}
             </div>
         );
