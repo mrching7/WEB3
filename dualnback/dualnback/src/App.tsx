@@ -10,6 +10,7 @@ export interface IState {
   gameRunning: boolean;
   gridSize: number;
   score: number;
+  highS: number;
 }
 
 class App extends React.Component<{}, IState> {
@@ -21,6 +22,7 @@ class App extends React.Component<{}, IState> {
       gameRunning: false,
       gridSize: 3,
       score: 0,
+      highS: 0
     };
 
     //this.setGridSize = this.setGridSize.bind(this);
@@ -62,7 +64,7 @@ class App extends React.Component<{}, IState> {
               <br></br>
 
               <span className="score">Highscore: </span>
-              0
+              {this.state.highS}
             </p>
             </Col>
 
@@ -82,8 +84,8 @@ class App extends React.Component<{}, IState> {
     this.setState({ gameRunning: false });
   }
 
-  private onScoreChange(prevScore: number, nextScore: number) {
-    this.setState({ score: nextScore });
+  private onScoreChange(prevScore: number, nextScore: number, highScore: number) {
+    this.setState({ score: nextScore, highS: highScore});
   }
 }
 

@@ -6,7 +6,7 @@ import { tsParenthesizedType } from "@babel/types";
 
 class Board {
 
-    public onScoreChange?: (prevScore: number, nextScore: number, highScore?: number) => void;
+    public onScoreChange?: (prevScore: number, nextScore: number, highScore: number) => void;
     private timerToken?: number;
     private onFlash?: (flash: Flash) => void;
     private readonly history: Flash[];
@@ -16,7 +16,7 @@ class Board {
     constructor(public readonly rows: number, public readonly columns: number) {
         this.history = [];
         this.score = 0;
-        this.highscore = 0;
+        this.highscore = 10;
     }
 
     public start(onFlash: (flash: Flash) => void) {
@@ -52,15 +52,14 @@ class Board {
     public updateScore(delta: number){
         const newScore: number=this.score+delta;
         if(this.onScoreChange){
-
             if(this.highscore < newScore){
                 this.highscore = newScore;
                 this.onScoreChange(this.score, newScore, this.highscore);                     
             }
             else{
-                this.highscore = newScore; 
                 this.onScoreChange(this.score, newScore, this.highscore);
             }
+
         }
         this.score=newScore;
     }

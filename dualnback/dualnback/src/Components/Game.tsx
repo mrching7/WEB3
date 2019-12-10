@@ -6,7 +6,7 @@ import Grid from './Grid';
 
 export interface IProps {
     columns: number;
-    onScoreChange?: (prevScore: number, nextScore: number) => void;
+    onScoreChange?: (prevScore: number, nextScore: number, highScore: number) => void;
     rows: number;
     running: boolean;
 }
