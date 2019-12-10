@@ -16,7 +16,7 @@ class Board {
     constructor(public readonly rows: number, public readonly columns: number) {
         this.history = [];
         this.score = 0;
-        this.highscore = 10;
+        this.highscore = 0;
     }
 
     public start(onFlash: (flash: Flash) => void) {
