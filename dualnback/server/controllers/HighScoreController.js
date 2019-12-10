@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var Highscore = mongoose.model('HighScore');
-//tilføj ny workout
+
 module.exports.addHighScore = (req, res, next) => {
     var highscore = new Highscore();
 
@@ -21,7 +21,7 @@ module.exports.addHighScore = (req, res, next) => {
     });
 }
 
-//return alle workout
+
 module.exports.showHighScore = (req, res, next) => {
     Workout.find((err, highscores)=>{
     if (!highscores)
