@@ -1,0 +1,61 @@
+.square{
+    width: 33%;
+}
+.square{
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	color:	white;
+	background-color:	#222222;
+}
+.square {
+	overflow: hidden;
+	border-radius: 8px;
+	background-size: cover;
+}
+.square-100 {
+	width: 100%;
+	padding-top: 10%;
+	padding-bottom: 80%;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: overline;
+}
+
+
+.grid{
+    display: block;
+    padding: 0;
+    margin: 0px -6px 12px;
+    text-align: left;
+    font-size: 0;
+}
+
+.grid-cell {
+	display: inline-block;
+	margin-top: 0;
+	padding: 0 6px;
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+	font-size: 16px;
+}
+
+.grid-33 {
+	width: 33.333333%;
+}
+
+
+.one {
+	background-color: #61d9fa;
+}
+
+.grid-space {
+    margin-top: 15px;
+}
+
+.psbtn {
+	width: 31%;
+	margin: 2px 5px 0px 5px;
+	background-color: darkcyan;
+  }

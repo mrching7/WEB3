@@ -9,4 +9,5 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
     }
 });
 
-require('./HighScoreModel');
+require('./scoreModel');
+require('./userModel');
