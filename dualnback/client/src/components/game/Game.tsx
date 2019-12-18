@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import Board from './Board';
 import Flash from './Flash';
 import Grid from './Grid';
+import { connect } from 'react-redux';
 
 export interface IProps {
     columns: number;
@@ -14,6 +15,7 @@ export interface IProps {
 export interface IState {
     board: Board;
     currentFlash?: Flash;
+    score: number;
 }
 
 class Game extends React.Component<IProps, IState> {
@@ -44,6 +46,7 @@ class Game extends React.Component<IProps, IState> {
         this.state = {
             board: new Board(this.props.rows, this.props.columns),
             currentFlash: undefined,
+            score: 0,
         }
 
         this.tryPosition = this.tryPosition.bind(this);
@@ -103,6 +106,21 @@ class Game extends React.Component<IProps, IState> {
             window.speechSynthesis.speak(utterance);
         }
     }
+
+    private HighScore(){
+        var ws=new WebSocket('ws://localhost:4000/api');
+        ws.onopen=()=>{
+            console.log('connected to ws');
+            ws.send(this.state.score.toString());
+        }
+
+        ws.onclose=()=>{
+            console.error('connection closed');
+
+        }
+
+    }
+
 }
 
 export default Game;
